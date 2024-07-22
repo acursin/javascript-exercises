@@ -1,12 +1,14 @@
-const findTheOldest = function(people) {
-    for (let person of people) {
-        if (!('yearOfDeath' in person)) {
-            person['yearOfDeath'] = new Date().getFullYear();
-        }
+const getAge = function (birth, death) {
+    if (!death) {
+        death = new Date().getFullYear();
     }
+    return death - birth;
+}
+
+const findTheOldest = function(people) {
 
     return people.reduce((oldestPerson, person) => {
-        if (person.yearOfDeath - person.yearOfBirth > oldestPerson.yearOfDeath - oldestPerson.yearOfBirth) {
+        if (getAge(person.yearOfBirth, person.yearOfDeath) > getAge(oldestPerson.yearOfBirth, oldestPerson.yearOfDeath)) {
             oldestPerson = person;
         }
         return oldestPerson;
