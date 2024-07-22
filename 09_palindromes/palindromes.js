@@ -1,10 +1,10 @@
-const palindromes = function (str) {
-    const palindrome = str
+const palindromes = function (string) {
+    const stringChars = string
         .toLowerCase()
         .split('')
         .filter(char => (char.toUpperCase() != char.toLowerCase()) || +char)
 
-    return palindrome.join('') === palindrome.toReversed().join('');
+    return stringChars.join('') === stringChars.toReversed().join('');
 };
 
 // Do not edit below this line
